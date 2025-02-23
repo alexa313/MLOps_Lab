@@ -1,13 +1,25 @@
 #!/bin/bash
 
+echo "Начинаем выполнение..."
+
 # Создание данных
-python data_creation.py
+echo "Создание данных..."
+python3 scripts/data_creation.py
+echo "Данные созданы."
 
 # Предобработка данных
-python model_preprocessing.py
+echo "Начинаем предобработку данных..."
+python3 scripts/model_preprocessing.py
+echo "Данные предобработаны."
 
 # Подготовка и обучение модели
-python model_preparation.py
+echo "Начинаем подготовку и обучение модели..."
+python3 scripts/model_preparation.py
+echo "Модель подготовлена и обучена."
 
 # Тестирование модели
-python model_testing.py
+echo "Начинаем тестирование модели..."
+python3 scripts/model_testing.py
+echo "Модель протестирована."
+
+echo "Завершение выполнения."
