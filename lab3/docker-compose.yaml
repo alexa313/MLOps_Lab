@@ -1,0 +1,12 @@
+version: "3"
+services:
+  iris_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: iris-classifier-image
+    container_name: iris-classifier-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
