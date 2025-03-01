@@ -5,10 +5,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    echo "Начинаем выполнение..."
-                    echo "Создание данных..."
+                    echo "Начинаем выполнение создания данных..."
                     python3 scripts/data_creation.py
-                    echo "Данные созданы."
+                    echo "Данные успешно созданы."
                     '''
                 }
             }
@@ -19,7 +18,7 @@ pipeline {
                     sh '''
                     echo "Начинаем предобработку данных..."
                     python3 scripts/model_preprocessing.py
-                    echo "Данные предобработаны."
+                    echo "Данные успешно предобработаны."
                     '''
                 }
             }
@@ -30,7 +29,7 @@ pipeline {
                     sh '''
                     echo "Начинаем подготовку и обучение модели..."
                     python3 scripts/model_preparation.py
-                    echo "Модель подготовлена и обучена."
+                    echo "Модель успешно подготовлена и обучена."
                     '''
                 }
             }
@@ -41,7 +40,7 @@ pipeline {
                     sh '''
                     echo "Начинаем тестирование модели..."
                     python3 scripts/model_testing.py
-                    echo "Модель протестирована."
+                    echo "Модель успешно протестирована."
                     echo "Завершение выполнения."
                     '''
                 }
