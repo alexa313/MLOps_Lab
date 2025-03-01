@@ -1,5 +1,5 @@
 # Используйте официальный образ Jenkins с поддержкой LTS и JDK 17
-FROM jenkins/jenkins:lts-jdk17
+FROM jenkins/jenkins:lts-jdk21
 
 # Переключаемся на пользователя root для установки пакетов
 USER root
@@ -20,7 +20,7 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y python3-venv
 
 # Устанавливаем OpenJDK 17 (необходимо, если вы хотите использовать Java)
-RUN apt-get install -y openjdk-17-jdk
+RUN apt-get install -y openjdk-21-jdk
 
 # Возвращаемся к пользователю jenkins после окончания установки
 USER jenkins

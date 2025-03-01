@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    stages {
+        stage('Data Creation') {
+            steps {
+                script {
+                    sh '''
+                    echo "Начинаем выполнение..."
+                    echo "Создание данных..."
+                    python3 scripts/data_creation.py
+                    echo "Данные созданы."
+                    '''
+                }
+            }
+        }
+        stage('Data Preprocessing') {
+            steps {
+                script {
+                    sh '''
+                    echo "Начинаем предобработку данных..."
+                    python3 scripts/model_preprocessing.py
+                    echo "Данные предобработаны."
+                    '''
+                }
+            }
+        }
+        stage('Model Preparation') {
+            steps {
+                script {
+                    sh '''
+                    echo "Начинаем подготовку и обучение модели..."
+                    python3 scripts/model_preparation.py
+                    echo "Модель подготовлена и обучена."
+                    '''
+                }
+            }
+        }
+        stage('Model Testing') {
+            steps {
+                script {
+                    sh '''
+                    echo "Начинаем тестирование модели..."
+                    python3 scripts/model_testing.py
+                    echo "Модель протестирована."
+                    echo "Завершение выполнения."
+                    '''
+                }
+            }
+        }
+    }
+}
