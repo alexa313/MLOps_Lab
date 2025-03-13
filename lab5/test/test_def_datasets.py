@@ -2,16 +2,19 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
+
 # Функция для генерации данных
 def generate_data(n_samples, noise_factor=0.0):
     X = np.random.rand(n_samples, 1) * 10
     y = 2 * X.squeeze() + 3 + np.random.randn(n_samples) * noise_factor
     return X, y
 
+
 # Функция для тестирования модели
 def check_model(X_test, y_test, model):
     y_pred = model.predict(X_test)
     return mean_squared_error(y_test, y_pred)
+
 
 # Функция для тестирования модели с выводом информации о датасете
 def test_model_performance():
@@ -33,13 +36,11 @@ def test_model_performance():
         mse = check_model(X_test, y_test, model)
         assert mse <= max_mse_quality, f"Датасет {dataset_name} является шумовым: MSE: {mse}"
 
-    # Проверяем MSE для каждого качественного датасета
+    # Проверяем MSE для каждого датасета
     for idx, (X, y) in enumerate(quality_datasets, start=1):
         check_mse(X, y, f"датасет {idx}")
+    check_mse(*noisy_dataset, "датасет 4")
 
-    # Проверка на зашумленном датасете
-    mse_noisy = check_model(*noisy_dataset, model)
-    assert mse_noisy > max_mse_quality, f"Зашумленный датасет имеет MSE: {mse_noisy}, что указывает на проблему!"
 
 # Запуск тестов через функцию
 test_model_performance()
